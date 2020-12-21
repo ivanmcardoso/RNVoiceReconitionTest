@@ -1,0 +1,12 @@
+{
+  "name": "voiceReconTest",
+  "displayName": "voiceReconTest",
+  "expo": {
+    "name": "voiceReconTest",
+    "slug": "voiceReconTest",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
