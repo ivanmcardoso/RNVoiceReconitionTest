@@ -5,6 +5,7 @@ import Voice, { SpeechEndEvent, SpeechRecognizedEvent, SpeechResultsEvent } from
 
 export default function App() {
 
+  const [isReconizing, setIsReconizing] = useState(false)
   const [speechValue, setSpeechValue] = useState("Diga algo")
 
   useEffect(()=>{
@@ -15,6 +16,13 @@ export default function App() {
           setSpeechValue("Por favor, repita.")
         }
       }
+      Voice.onSpeechStart = () =>{
+        setIsReconizing(true)
+      }
+      Voice.onSpeechEnd = () => {
+        setIsReconizing(false)
+      }
+      return Voice.removeAllListeners()
   }, [])
 
   function onClick() {
@@ -29,6 +37,7 @@ export default function App() {
     <View style={styles.container}>
       <Text>{speechValue}</Text>
       <Button title="gravar" onPress={onClick}/>
+      {isReconizing && <Text>Escutando...</Text>}
     </View>
   );
 }
